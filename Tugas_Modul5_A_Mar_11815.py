@@ -5,12 +5,7 @@ import pickle
 
 # Fungsi untuk memuat model
 def load_model():
-    # Asumsi file model ada di direktori yang sama dengan skrip Streamlit
-    model_path = 'best_model.pkl'  # Path relatif untuk file model
-    if not os.path.exists(model_path):
-        st.error(f"Model file '{model_path}' not found. Ensure it's in the app directory.")
-        st.stop()
-    with open(model_path, 'rb') as file:
+    with open(r'best_model.pkl', 'rb') as file:  # Ganti dengan path model Anda
         return pickle.load(file)
 
 
