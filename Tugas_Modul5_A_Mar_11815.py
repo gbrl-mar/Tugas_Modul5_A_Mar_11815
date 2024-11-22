@@ -4,10 +4,10 @@ import numpy as np
 import pickle
 
 # Fungsi untuk memuat model
-@st.cache_resource
 def load_model():
-    with open(r'C:\ML\Tugas_Modul5_A_Mar_11815\best_model.pkl', 'rb') as file:  # Ganti dengan path model Anda
+    with open(r'best_model.pkl', 'rb') as file:  # Ganti dengan path model Anda
         return pickle.load(file)
+
 
 # Fungsi untuk melakukan prediksi
 def predict_image(image, model):
