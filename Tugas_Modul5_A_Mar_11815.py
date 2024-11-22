@@ -4,10 +4,14 @@ import numpy as np
 import pickle
 
 # Fungsi untuk memuat model
-@st.cache_resource
-def load_model():
-    with open(r'C:\ML\Tugas_Modul5_A_Mar_11815\best_model.pkl', 'rb') as file:  # Ganti dengan path model Anda
-        return pickle.load(file)
+model_path = r'best_model.pkl'
+
+# Muat model
+if os.path.exists(model_path):
+    try:
+        # Mengurangi verbosity dari TensorFlow
+        tf.get_logger().setLevel('ERROR')
+        model = tf.keras.models.load_model(model_path, compile=False)
 
 # Fungsi untuk melakukan prediksi
 def predict_image(image, model):
