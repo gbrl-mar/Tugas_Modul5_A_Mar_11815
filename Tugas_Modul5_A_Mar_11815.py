@@ -4,14 +4,11 @@ import numpy as np
 import pickle
 
 # Fungsi untuk memuat model
-model_path = r'best_model.pkl'
+def load_model():
+    model_path = os.path.join(os.getcwd(), 'best_model.pkl')  # Path relatif untuk GitHub
+    with open(model_path, 'rb') as file:  # Gunakan path relatif
+        return pickle.load(file)
 
-# Muat model
-if os.path.exists(model_path):
-    try:
-        # Mengurangi verbosity dari TensorFlow
-        tf.get_logger().setLevel('ERROR')
-        model = tf.keras.models.load_model(model_path, compile=False)
 
 # Fungsi untuk melakukan prediksi
 def predict_image(image, model):
